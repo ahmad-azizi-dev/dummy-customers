@@ -1,9 +1,12 @@
 run:
-	./vendor/bin/sail up -d
-	./vendor/bin/sail composer install
 	cp .env.example .env
+	composer install
+	./vendor/bin/sail up -d
 	./vendor/bin/sail artisan migrate
 	./vendor/bin/sail artisan db:seed
+
+down:
+	./vendor/bin/sail down
 
 test:
 	./vendor/bin/sail artisan test
